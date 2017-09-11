@@ -1,0 +1,24 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "name": "Mass grow",
+        "description": "Program for growing mass"
+      },
+      {
+        "id": 2,
+        "name": "Pyramide",
+        "description": "Standart powerlifting pyramide"
+      },
+      {
+        "id": 3,
+        "name": "Weight loss",
+        "description": "Program for intensive training and weight loss"
+      },
+      {
+        "id": 4,
+        "name": "Functional training",
+        "description": "Program for functional work. It is best for MMA, WR and others."
+      }
+    ]
+  }
