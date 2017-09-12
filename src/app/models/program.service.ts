@@ -8,12 +8,12 @@ import { CONFIG } from '../core';
 let programsUrl = CONFIG.baseUrls.programs;
 
 @Injectable()
-export class CharacterService {
+export class ProgramService {
   //onDbReset = this.messageService.state;
 
   constructor(private http: Http,
-    /*private exceptionService: ExceptionService,
-    private messageService: MessageService,
+    //private exceptionService: ExceptionService
+    /**private messageService: MessageService,
   private spinnerService: SpinnerService*/) {
     //this.messageService.state.subscribe(state => this.getCharacters());
   }
@@ -24,6 +24,16 @@ export class CharacterService {
     return <Observable<Program>>this.http
       .post(`${programsUrl}`, body)
       .map(res => res.json().data)
+      .catch(this.handleError);
+      //.finally(() => this.spinnerService.hide());
+  }
+  getPrograms() {
+    //this.spinnerService.show();
+    console.log(programsUrl);
+    return <Observable<Program[]>>this.http
+      .get(programsUrl)
+      .map(res => this.extractData<Program[]>(res))
+      .catch(this.handleError);
       //.catch(this.exceptionService.catchBadResponse)
       //.finally(() => this.spinnerService.hide());
   }
@@ -33,15 +43,6 @@ export class CharacterService {
     return <Observable<Character>>this.http
       .delete(`${charactersUrl}/${character.id}`)
       .map(res => this.extractData<Character>(res))
-      .catch(this.exceptionService.catchBadResponse)
-      .finally(() => this.spinnerService.hide());
-  }
-
-  getCharacters() {
-    this.spinnerService.show();
-    return <Observable<Character[]>>this.http
-      .get(charactersUrl)
-      .map(res => this.extractData<Character[]>(res))
       .catch(this.exceptionService.catchBadResponse)
       .finally(() => this.spinnerService.hide());
   }
@@ -65,6 +66,12 @@ export class CharacterService {
       .catch(this.exceptionService.catchBadResponse)
       .finally(() => this.spinnerService.hide());
   }*/
+
+  private handleError(error: Response) {
+    console.error(error);
+    let msg = `Error status code ${error.status} at ${error.url}`;
+    return Observable.throw(msg);
+  }
 
   private extractData<T>(res: Response) {
     if (res.status < 200 || res.status >= 300) {

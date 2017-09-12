@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+//import { CommonModule } from 
+
+import { Program, ProgramService } from '../../models';
 
 @Component({
   selector: 'gj-program-list',
@@ -6,9 +9,28 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./program-list.component.css']
 })
 export class ProgramListComponent implements OnInit {
-  constructor() { }
+  programs: Program[];
+  constructor(private programService: ProgramService) { }
+
+  getPrograms() {
+    this.programs = [];
+
+    this.programService.getPrograms()
+      .subscribe(programs => {
+        this.programs = programs;
+      });
+  }
+  /*ngOnDestroy() {
+    this.dbResetSubscription.unsubscribe();
+  }*/
 
   ngOnInit() {
+    //componentHandler.upgradeDom();
+    this.getPrograms();
+    /*this.dbResetSubscription = this.characterService.onDbReset
+      .subscribe(() => this.getCharacters());*/
   }
+
+
 
 }

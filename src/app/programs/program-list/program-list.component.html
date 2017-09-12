@@ -7,6 +7,10 @@
             </tr>
         </thead>
         <tbody>
+            <tr *ngFor="let program of programs">
+                <td>{{program.name}}</td>
+                <td>{{program.description}}</td>
+            </tr>
         </tbody>
     </table>
 </div>
