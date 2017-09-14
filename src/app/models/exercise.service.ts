@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Program } from './program.model';
+import { Exercise } from './exercise.model';
 import { CONFIG } from '../core';
 
-let programsUrl = CONFIG.baseUrls.programs;
+let exercisesUrl = CONFIG.baseUrls.exercises;
 
 @Injectable()
-export class ProgramService {
+export class ExerciseService {
   //onDbReset = this.messageService.state;
 
   constructor(private http: Http,
@@ -18,20 +18,20 @@ export class ProgramService {
     //this.messageService.state.subscribe(state => this.getCharacters());
   }
 
-  addProgram(program: Program) {
-    let body = JSON.stringify(program);
+  addExercise(exercise: Exercise) {
+    let body = JSON.stringify(exercise);
     //this.spinnerService.show();
-    return <Observable<Program>>this.http
-      .post(`${programsUrl}`, body)
+    return <Observable<Exercise>>this.http
+      .post(`${exercisesUrl}`, body)
       .map(res => res.json().data)
       .catch(this.handleError);
       //.finally(() => this.spinnerService.hide());
   }
-  getPrograms() {
+  getExercises() {
     //this.spinnerService.show();
-    return <Observable<Program[]>>this.http
-      .get(programsUrl)
-      .map(res => this.extractData<Program[]>(res))
+    return <Observable<Exercise[]>>this.http
+      .get(exercisesUrl)
+      .map(res => this.extractData<Exercise[]>(res))
       .catch(this.handleError);
       //.catch(this.exceptionService.catchBadResponse)
       //.finally(() => this.spinnerService.hide());

@@ -3,30 +3,35 @@
       {
         "id": 1,
         "name": "Deadlift",
+        "type": "Base",
         "muscletype": "Legs, Back",
         "description": ""
       },
       {
         "id": 2,
         "name": "Pullups",
+        "type": "Functional",
         "muscletype": "Arms, Shoulders",
         "description": ""
       },
       {
         "id": 3,
         "name": "Pushups",
+        "type": "Functional",
         "muscletype": "Tricep, Bicep",
         "description": ""
       },
       {
         "id": 4,
         "name": "Squat",
+        "type": "Base",
         "muscletype": "Legs",
         "description": ""
       },
       {
         "id": 5,
         "name": "Bench press",
+        "type": "Base",
         "muscletype": "Chest, Tricep",
         "description": ""
       }
